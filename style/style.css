@@ -98,6 +98,124 @@ body {
   background: #ffffff;
   min-width: 1280px;
 }
+#wrapper {
+}
+#header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  padding: 0 80px;
+  color: #fff;
+  transition: all 0.4s;
+}
+#header::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 100%;
+  height: 0;
+  background: #ffffff;
+}
+#header > div.inner_header {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#header > .inner_header > h1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+}
+#header > .inner_header > h1 > a {
+  display: block;
+}
+
+/* global navigation bar */
+.inner_header > nav#gnb {
+  position: absolute;
+  left: 270px;
+  top: 0;
+  height: 60px;
+  overflow: hidden;
+}
+nav#gnb > ul.gnb_list {
+  text-align: center;
+}
+nav#gnb > ul.gnb_list > li {
+  float: left;
+}
+nav#gnb > ul.gnb_list > li + li {
+  margin-left: 5px;
+}
+nav#gnb > ul.gnb_list > li > a {
+  display: block;
+  padding: 0 35px;
+}
+nav#gnb > ul.gnb_list > li:last-child > a {
+  margin-left: 140px;
+}
+nav#gnb > ul.gnb_list > li > a span {
+  padding: 0 5px;
+  position: relative;
+}
+nav#gnb > ul.gnb_list > li > a:hover > span.gnb_txt::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #31408e;
+  position: absolute;
+  left: 0;
+}
+nav#gnb > ul.gnb_list > li > a ~ ul.snb_list {
+  margin-top: 30px;
+}
+nav#gnb > ul.gnb_list > li > a ~ .snb_list > li > a {
+  display: block;
+  font-size: 13px;
+  line-height: 30px;
+}
+nav#gnb > ul.gnb_list > li > a ~ .snb_list > li > a > span {
+  position: relative;
+}
+nav#gnb
+  > ul.gnb_list
+  > li
+  > a
+  ~ .snb_list
+  > li
+  > a:hover
+  > span.snb_txt::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #31408e;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+}
+
+/* header에 마우스를 갖다 대었을 때 on이라는 클래스가 추가되면서 */
+#header.on {
+  background: #ffffff;
+  color: black;
+}
+#header.open::after {
+  height: 209.2px;
+  border-top: 1px solid #ebebeb;
+  z-index: -1;
+}
+#header > .inner_header > nav#gnb.open {
+  height: 209.2px;
+}
 
 /* skip-nav */
 .skip-nav {
