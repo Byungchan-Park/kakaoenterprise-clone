@@ -6,6 +6,9 @@ let navbar = document.getElementById('gnb')
 header.addEventListener('mouseover', () => {
   header.classList.add('on')
 })
+header.addEventListener('focus', () => {
+  header.classList.add('on')
+})
 header.addEventListener('mouseout', () => {
   header.classList.remove('on')
 })
