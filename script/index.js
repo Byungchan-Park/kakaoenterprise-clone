@@ -2,6 +2,26 @@
 
 let header = document.getElementById('header')
 let navbar = document.getElementById('gnb')
+let sloganList = document.querySelectorAll('ul.visual_slogans li')
+let relatedBtn = document.querySelector('.btn_relation')
+let relatedList = document.querySelector('.list_relation')
+
+let sloganItemIndex = 0
+const show = () => {
+  if (sloganItemIndex >= sloganList.length) {
+    sloganItemIndex = 0
+  }
+  showSlogan()
+  function showSlogan() {
+    sloganList[sloganItemIndex].classList.add('current')
+    sloganItemIndex++
+  }
+  setTimeout(() => {
+    sloganList[sloganItemIndex - 1].classList.remove('current')
+    show()
+  }, 5000)
+}
+show()
 
 header.addEventListener('mouseover', () => {
   header.classList.add('on')
@@ -40,4 +60,10 @@ navbar.addEventListener('mouseover', () => {
 navbar.addEventListener('mouseout', () => {
   navbar.classList.remove('open')
   header.classList.remove('open')
+})
+
+console.log(relatedBtn)
+relatedBtn.addEventListener('click', () => {
+  console.log(relatedList)
+  relatedList.classList.toggle('show_relation')
 })

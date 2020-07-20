@@ -110,6 +110,8 @@ button {
 }
 
 /* common */
+#wrapper {
+}
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
@@ -117,8 +119,6 @@ body {
   color: #222222;
   background: #ffffff;
   min-width: 1280px;
-}
-#wrapper {
 }
 #header {
   position: fixed;
@@ -264,16 +264,36 @@ nav#gnb
 #main-visual ul.visual_slogans li {
   position: absolute;
   left: 65px;
-  top: 160px;
+  top: 170px; /* 원래 160 */
   color: #ffffff;
-  display: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   padding-left: 20px;
-  display: none;
+  opacity: 0;
 }
-#main-visual ul.visual_slogans li:first-child {
+
+#main-visual ul.visual_slogans li:nth-child(6) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#main-visual ul.visual_slogans li:nth-child(6) img {
+  width: 1120px;
+  height: 100px;
+}
+
+#main-visual ul.visual_slogans li:last-child {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#main-visual ul.visual_slogans li:last-child img {
   display: block;
+  width: 646px;
+  height: 345px;
+  position: relative;
+  left: -10px;
 }
 #main-visual ul.visual_slogans li p:first-child {
   font-size: 36px;
@@ -301,6 +321,51 @@ div.bg {
   z-index: -20;
 }
 
+li:nth-child(-n + 5).current {
+  animation: fadeSlogan 5s ease-out !important;
+}
+li:nth-child(n + 6).current {
+  opacity: 1 !important;
+}
+@keyframes fadeSlogan {
+  0% {
+    top: 170px;
+  }
+  4% {
+    top: 160px;
+  }
+  8% {
+    top: 150px;
+  }
+  15% {
+    opacity: 1;
+    top: 150px;
+  }
+  50% {
+    opacity: 1;
+    top: 150px;
+  }
+  70% {
+    opacity: 1;
+    top: 150px;
+  }
+  82% {
+    top: 140px;
+    opacity: 0.6;
+  }
+  86% {
+    top: 130px;
+    opacity: 0.4;
+  }
+  90% {
+    top: 120px;
+    opacity: 0.2;
+  }
+  100% {
+    top: 110px;
+    opacity: 0;
+  }
+}
 /*  main-info */
 #main-info {
   position: relative;
@@ -311,6 +376,7 @@ div.bg {
 #main-info div.content-box {
   margin: 0 auto;
   overflow: hidden;
+  max-width: 1200px;
 }
 #main-info div.content-box article {
   float: left;
@@ -399,10 +465,21 @@ div.bg {
   float: left;
   padding: 0 10px;
   font-size: 12px;
-  color: #777795;
+  color: #777777;
+  position: relative;
 }
 #footer > div.wrapper_footer > ul.list_info li:first-child {
   padding-left: 0;
+}
+#footer > div.wrapper_footer > ul.list_info li + li:before {
+  content: '';
+  width: 1px;
+  height: 9px;
+  background: #aeaeae;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 #footer > div.wrapper_footer > address.wrapper_address {
   padding-top: 10px;
@@ -464,6 +541,14 @@ div.bg {
   display: block;
   padding: 0 16px;
 }
+#footer
+  > div.wrapper_footer
+  > div.wrapper_relation
+  > ul.list_sns
+  li:last-child
+  > a {
+  padding-left: 16px;
+}
 #footer > div.wrapper_footer > div.wrapper_relation > ul.list_sns li > a img {
   vertical-align: middle;
 }
@@ -524,8 +609,9 @@ div.bg {
   padding: 10px 52px 10px 15px;
   font-size: 12px;
   border: 1px solid #ebebeb;
-  z-index: 20;
-  display: none;
+  opacity: 0;
+  background: #ffffff;
+  z-index: 2000;
 }
 #footer
   > div.wrapper_footer
@@ -551,20 +637,69 @@ div.bg {
   > ul.list_relation
   li
   a {
-  color: inherit;
+  color: #666666;
 }
 #footer
   > div.wrapper_footer
   > div.wrapper_relation
   > div.bundle_site
   > ul.list_relation
-  li : last-child {
+  li:last-child {
   padding-top: 9px;
   padding-bottom: 10px;
 }
+
+.show_relation {
+  opacity: 1 !important;
+}
+
 #footer > div.wrapper_footer > div.wrapper_copyright {
   padding-bottom: 21px;
 }
 #footer > div.wrapper_footer > div.wrapper_copyright small {
   font-size: 12px;
+}
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 1440px) {
+  nav#gnb > ul.gnb_list > li:last-child > a {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 1350px) {
+  nav#gnb > ul.gnb_list > li > a {
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 1240px) {
+  #main-visual ul.visual_slogans li:last-child img {
+    width: 600px;
+  }
+  #main-info {
+    padding-left: 5px;
+  }
+  #main-info div.content-box article:not(:nth-child(-3n + 4)) {
+    /* 1번째, 4번째 요소 제외 */
+    margin-left: 10px;
+  }
+  #footer > div.wrapper_footer > div.wrapper_relation {
+    position: static;
+  }
+  #footer > div.wrapper_footer > div.wrapper_relation > ul.list_sns {
+    float: none;
+    margin: 30px 0;
+  }
+  #footer
+    > div.wrapper_footer
+    > div.wrapper_relation
+    > ul.list_sns
+    li:first-child
+    a {
+    padding-left: 0;
+  }
+  #footer > div.wrapper_footer > div.wrapper_relation > div.bundle_site {
+    float: none;
+    margin: 30px 0;
+    padding: 0;
+  }
 }
