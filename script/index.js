@@ -62,8 +62,6 @@ navbar.addEventListener('mouseout', () => {
   header.classList.remove('open')
 })
 
-console.log(relatedBtn)
 relatedBtn.addEventListener('click', () => {
-  console.log(relatedList)
   relatedList.classList.toggle('show_relation')
 })
